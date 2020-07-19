@@ -33,6 +33,12 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.projectlombok:lombok')
+
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    //spring boot用の抽象化ライブラリーです spring bootのバージョンに合わせてJPA関連ライブラリーを管理します
+    compile('com.h2database:h2')
+    //インメモリデータベースです。メモリーで実行してるんでアプリの再起動したら初期化することを利用してテストによく使います
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
