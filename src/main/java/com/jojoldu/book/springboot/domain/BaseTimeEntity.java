@@ -10,13 +10,13 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@MappedSuperclass //JPA EntityクラスたちがBaseTimeEntityを継承する場言、フィールドもコラムとして認識します
+@EntityListeners(AuditingEntityListener.class)//BaseTimeEntityクラスにAuditing機能を含みます。
 public class BaseTimeEntity {
 
-    @CreatedDate
+    @CreatedDate //Entityが生成して保存するとき時間が自動保存します
     private LocalDateTime createdDate;
 
-    @LastModifiedDate
+    @LastModifiedDate //照会したEntity値を変更するときに時間が自動的に保存されます。
     private LocalDateTime modifiedDate;
 }
