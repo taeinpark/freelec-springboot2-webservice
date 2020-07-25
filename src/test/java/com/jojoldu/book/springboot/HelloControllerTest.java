@@ -1,5 +1,3 @@
-
-
 package com.jojoldu.book.springboot;
 
 import com.jojoldu.book.springboot.web.HelloController;
@@ -29,7 +27,7 @@ public class HelloControllerTest {
     public void helloがリターンされる() throws Exception{
         String hello = "hello";
 
-        mvc.perform(get("/hello"))//MockMvcを通じて/hello住所にHTTP GET 要請する　
+        mvc.perform(get("/hello"))//MockMvcを通じて/hello住所にHTTP GET 要請する
                 .andExpect(status().isOk())//mvc.performの結果を検証しますHTTP HeaderのStatusを検証します 200,404,500等の状態を検証します
                 .andExpect(content().string(hello));//同じくmvc.performの結果を検証します 回答本文の内容を検証します
     }

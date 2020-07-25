@@ -39,6 +39,7 @@ dependencies {
     compile('com.h2database:h2')
     //インメモリデータベースです。メモリーで実行してるんでアプリの再起動したら初期化することを利用してテストによく使います
 
+    compile('org.springframework.boot:spring-boot-starter-mustache')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
