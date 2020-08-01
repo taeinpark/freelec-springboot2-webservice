@@ -1,5 +1,7 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.LoginUser;
+import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoldu.book.springboot.service.posts.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
@@ -15,8 +19,12 @@ public class IndexController {
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model){ //Model : サーバーテンプレートエンジンで使用できるオブジェクトを保存
+    public String index(Model model, @LoginUser SessionUser user){ //Model : サーバーテンプレートエンジンで使用できるオブジェクトを保存
         model.addAttribute("posts", postsService.findAllDesc());
+        System.out.println("user" + user);
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 

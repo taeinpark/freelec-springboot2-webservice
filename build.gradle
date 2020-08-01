@@ -42,6 +42,8 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
     //ソーシャル機能実現する際に必要な依存性
+    compile('org.springframework.session:spring-session-jdbc')
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
