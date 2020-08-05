@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @RequiredArgsConstructor
-@EnableWebSecurity
+@EnableWebSecurity//Spring Security 設定を活性化させる
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
@@ -15,19 +15,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable().headers().frameOptions().disable()
+                .csrf().disable().headers().frameOptions().disable()//h2-console画像を使うために該当オプションdisable
                 .and()
-                    .authorizeRequests()
-                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
-                    .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                    .authorizeRequests() //URL各権限設定のオプションの初めです
+                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()//antMatchers 権限管理対象を指定します
+                    .antMatchers("/api/v1/**").hasRole(Role.USER.name())//anyRequest 設定以外のURL
                     .anyRequest().authenticated()
                 .and()
-                    .logout()
+                    .logout() //Logout機能設定の初め
                         .logoutSuccessUrl("/")
                 .and()
-                    .oauth2Login()
-                        .userInfoEndpoint()
-                            .userService(customOAuth2UserService);
+                    .oauth2Login() //oauth2機能設定の初め
+                        .userInfoEndpoint() //Oauth2 ログイン成功後使用者の情報を持ってくる時の設定
+                            .userService(customOAuth2UserService); //ソーシャルログイン成功時にフォローを行うUserServiceインタフェースの実装体を登録
 
     }
 }
