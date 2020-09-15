@@ -44,6 +44,8 @@ dependencies {
     //ソーシャル機能実現する際に必要な依存性
     compile('org.springframework.session:spring-session-jdbc')
 
+    compile("org.mariadb.jdbc:mariadb-java-client")
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
     testCompile('org.springframework.security:spring-security-test')
