@@ -36,7 +36,7 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # Traivs repo settings에 설정된 값
     secret_access_key: $AWS_SECRET_KEY
-    bucket: freelec-springboot-build #s3 버킷
+    bucket: freelec-springboot-build-mine #s3 버킷
     key: freelec-springboot-webserivce.zip #빌드파일을 압축해서 전달
     bundle_type: zip
     application: freelec-springboot2-webservice #웹 콘솔에서 등록한 CodeDeploy 애플리케이션
