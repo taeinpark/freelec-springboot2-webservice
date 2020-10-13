@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable().headers().frameOptions().disable()//h2-console画像を使うために該当オプションdisable
                 .and()
                     .authorizeRequests() //URL各権限設定のオプションの初めです
-                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()//antMatchers 権限管理対象を指定します
+                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()//antMatchers 権限管理対象を指定します
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())//anyRequest 設定以外のURL
                     .anyRequest().authenticated()
                 .and()
