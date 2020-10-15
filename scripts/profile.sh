@@ -5,7 +5,7 @@
 function find_idle_profile()
 {
   RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile)
-  echo "test This 22"
+
   if [ ${RESPONSE_CODE} -ge 400 ] #400보다 크면(에러코드 400이상 40x 50x)
   then
     CURRENT_PROFILE=real2
